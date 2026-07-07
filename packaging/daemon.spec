@@ -1,6 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 a = Analysis(
-    ['../manager-python/app/daemon_main.py'],
+    ['../manager-python/app/launch_daemon.py'],
     pathex=['../manager-python'],
     binaries=[('../manager-python/encoder.exe', '.')],
     datas=[],
