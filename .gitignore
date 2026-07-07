@@ -1,0 +1,52 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+
+# venv (после переименования env -> venv)
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Go
+core-go/encoder
+manager-python/encoder.exe
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Логи демона
+*.log
+
+# Go
+core-go/encoder
+manager-python/encoder.exe
+
+# PyInstaller
+*.spec.bak
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Логи и данные демона (не должны попадать в репо)
+*.log

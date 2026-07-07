@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p2p-backup"
+version = "0.1.0"
+description = "Distributed P2P backup with erasure coding"
+requires-python = ">=3.12"
+dependencies = [
+    "flet==0.85.3",
+    "pystray==0.19.5",
+    "pillow==12.3.0",
+    "win11toast>=0.35",
+    "pywin32==312",
+    "psutil==7.2.2",
+    "invoke==3.0.3",
+]
+
+[project.scripts]
+p2p-backup-gui = "app.entrypoints:run_gui"
+p2p-backup-daemon = "app.entrypoints:run_daemon"
+
+[tool.setuptools.packages.find]
+where = ["manager-python"]

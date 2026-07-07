@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build Go core
+        run: |
+          cd core-go
+          go build -o ../manager-python/encoder.exe ./cmd/encoder
+
+      - name: Install Python package + PyInstaller
+        run: |
+          pip install -e .
+          pip install pyinstaller
+
+      - name: Build GUI exe
+        run: pyinstaller packaging/gui.spec --distpath dist/gui
+
+      - name: Build Daemon exe
+        run: pyinstaller packaging/daemon.spec --distpath dist/daemon
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Compile installer
+        run: iscc installer\setup.iss
+
+      - name: Upload installer to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/installer/P2PBackupSetup.exe
+          generate_release_notes: true
