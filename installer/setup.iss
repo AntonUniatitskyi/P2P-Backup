@@ -16,8 +16,8 @@ SolidCompression=yes
 PrivilegesRequired=admin
 
 [Files]
-Source: "..\dist\gui\P2PBackupGUI\*"; DestDir: "{app}"; Flags: recursesubdirs
-Source: "..\dist\daemon\P2PBackupDaemon\*"; DestDir: "{app}"; Flags: recursesubdirs
+Source: "..\dist\gui\P2PBackupGUI.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\dist\daemon\P2PBackupDaemon.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\P2PBackupGUI.exe"
