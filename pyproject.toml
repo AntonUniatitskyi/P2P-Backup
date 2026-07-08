@@ -9,6 +9,7 @@ description = "Distributed P2P backup with erasure coding"
 requires-python = ">=3.12"
 dependencies = [
     "flet==0.85.3",
+    "flet-desktop",
     "pystray==0.19.5",
     "pillow==12.3.0",
     "win11toast>=0.35",

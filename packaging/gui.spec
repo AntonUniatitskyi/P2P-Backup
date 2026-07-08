@@ -1,4 +1,17 @@
 # -*- mode: python ; coding: utf-8 -*-
+
+from PyInstaller.utils.hooks import collect_all
+
+datas = []
+binaries = []
+hiddenimports = []
+
+for pkg in ['flet', 'flet_desktop']:
+    pkg_datas, pkg_binaries, pkg_hiddenimports = collect_all(pkg)
+    datas += pkg_datas
+    binaries += pkg_binaries
+    hiddenimports += pkg_hiddenimports
+    
 a = Analysis(
     ['../manager-python/app/launch_gui.py'],
     pathex=['../manager-python'],
