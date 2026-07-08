@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Distributed P2P backup with erasure coding"
 requires-python = ">=3.12"
 dependencies = [
-    "flet==0.85.3",
-    "flet-desktop",
+    "flet==0.28.3",
+    "flet-desktop==0.28.3",
     "pystray==0.19.5",
     "pillow==12.3.0",
     "win11toast>=0.35",
