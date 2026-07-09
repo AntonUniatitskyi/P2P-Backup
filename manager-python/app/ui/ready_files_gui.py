@@ -27,7 +27,7 @@ def show_ready_files_window(ready_files, ready_dir):
 
             list_view.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.CHECK_CIRCLE, color=ft.colors.GREEN_400),
+                    ft.Icon(ft.icons.CHECK_CIRCLE, color=ft.Colors.GREEN_400),
                     ft.Text(basename, expand=True),
                     ft.ElevatedButton("Сохранить как...", on_click=make_save_handler(path))
                 ])

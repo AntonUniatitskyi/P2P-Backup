@@ -31,7 +31,7 @@ def main_gui(page: ft.Page):
     # ================= В К Л А Д К А  1 :  Б Э К А П =================
     dirs_list_view_split = ft.ListView(expand=False, height=120, spacing=5)
     files_list_view_split = ft.ListView(expand=False, height=100, spacing=5)
-    req_split_text = ft.Text("Выбрано папок: 0 из 5", weight="bold", color=ft.colors.ORANGE_300)
+    req_split_text = ft.Text("Выбрано папок: 0 из 5", weight="bold", color=ft.Colors.ORANGE_300)
     file_name_text = ft.Text("Файлы не выбраны", italic=True)
 
     def update_split_ui():
@@ -47,9 +47,9 @@ def main_gui(page: ft.Page):
 
             dirs_list_view_split.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.DRIVE_FILE_RENAME_OUTLINE, color=ft.colors.BLUE_200),
+                    ft.Icon(ft.icons.DRIVE_FILE_RENAME_OUTLINE, color=ft.Colors.BLUE_200),
                     ft.Text(path, expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.colors.RED_400, on_click=remove_dir)
+                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir)
                 ])
             )
 
@@ -67,9 +67,9 @@ def main_gui(page: ft.Page):
 
             files_list_view_split.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.INSERT_DRIVE_FILE, color=ft.colors.GREEN_200),
+                    ft.Icon(ft.icons.INSERT_DRIVE_FILE, color=ft.Colors.GREEN_200),
                     ft.Text(os.path.basename(path), expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.colors.RED_400, on_click=remove_file)
+                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_file)
                 ])
             )
         file_name_text.value = f"Выбрано файлов: {len(state['selected_file_paths'])}"
@@ -135,14 +135,14 @@ def main_gui(page: ft.Page):
 
     tab_split = ft.Column([
         ft.Row([pick_file_btn, file_name_text]),
-        ft.Container(content=files_list_view_split, border=ft.border.all(1, ft.colors.WHITE10), border_radius=8,
+        ft.Container(content=files_list_view_split, border=ft.border.all(1, ft.Colors.WHITE10), border_radius=8,
                      padding=10),
         ft.Divider(),
         ft.Text("Основные блоки данных (K)"), data_slider,
         ft.Text("Резервные блоки четности (M)"), parity_slider,
         ft.Divider(),
         ft.Row([add_dir_split_btn, req_split_text], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
-        ft.Container(content=dirs_list_view_split, border=ft.border.all(1, ft.colors.WHITE10), border_radius=8,
+        ft.Container(content=dirs_list_view_split, border=ft.border.all(1, ft.Colors.WHITE10), border_radius=8,
                      padding=10),
         ft.Container(content=split_btn, alignment=ft.alignment.center, margin=ft.margin.only(top=10))
     ], scroll=ft.ScrollMode.AUTO)
@@ -151,7 +151,7 @@ def main_gui(page: ft.Page):
     # K и M больше не запрашиваются у пользователя — Go-ядро само читает их
     # из манифеста (.meta), который был сохранён рядом с шардами при бэкапе.
     dirs_list_view_restore = ft.ListView(expand=False, height=120, spacing=5)
-    req_restore_text = ft.Text("Укажите папки для поиска чанков", weight="bold", color=ft.colors.BLUE_200)
+    req_restore_text = ft.Text("Укажите папки для поиска чанков", weight="bold", color=ft.Colors.BLUE_200)
 
     found_files_dropdown = ft.Dropdown(
         label="Обнаруженные файлы на дисках",
@@ -180,9 +180,9 @@ def main_gui(page: ft.Page):
 
             dirs_list_view_restore.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.FOLDER, color=ft.colors.ORANGE_200),
+                    ft.Icon(ft.icons.FOLDER, color=ft.Colors.ORANGE_200),
                     ft.Text(path, expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.colors.RED_400, on_click=remove_dir_res)
+                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir_res)
                 ])
             )
         restore_btn.disabled = len(state["restore_directories"]) == 0
@@ -222,7 +222,7 @@ def main_gui(page: ft.Page):
         ft.Divider(),
         ft.Text("2. Укажите папки, где могут находиться куски файла:"),
         ft.Row([add_dir_restore_btn, req_restore_text], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
-        ft.Container(content=dirs_list_view_restore, border=ft.border.all(1, ft.colors.WHITE10), border_radius=8,
+        ft.Container(content=dirs_list_view_restore, border=ft.border.all(1, ft.Colors.WHITE10), border_radius=8,
                      padding=10),
         ft.Container(content=restore_btn, alignment=ft.alignment.center, margin=ft.margin.only(top=10))
     ], scroll=ft.ScrollMode.AUTO)
@@ -238,10 +238,10 @@ def main_gui(page: ft.Page):
     )
 
     page.add(
-        ft.Text(Config.APP_TITLE, size=22, weight="bold", color=ft.colors.BLUE_400),
+        ft.Text(Config.APP_TITLE, size=22, weight="bold", color=ft.Colors.BLUE_400),
         tabs,
         ft.Text("Консоль операций:"),
-        ft.Container(content=log_console, bgcolor=ft.colors.BLACK87, padding=10, border_radius=8)
+        ft.Container(content=log_console, bgcolor=ft.Colors.BLACK87, padding=10, border_radius=8)
     )
 
     update_split_ui()
