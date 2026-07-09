@@ -47,9 +47,9 @@ def main_gui(page: ft.Page):
 
             dirs_list_view_split.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.DRIVE_FILE_RENAME_OUTLINE, color=ft.Colors.BLUE_200),
+                    ft.Icon(ft.Icons.DRIVE_FILE_RENAME_OUTLINE, color=ft.Colors.BLUE_200),
                     ft.Text(path, expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir)
+                    ft.IconButton(ft.Icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir)
                 ])
             )
 
@@ -67,9 +67,9 @@ def main_gui(page: ft.Page):
 
             files_list_view_split.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.INSERT_DRIVE_FILE, color=ft.Colors.GREEN_200),
+                    ft.Icon(ft.Icons.INSERT_DRIVE_FILE, color=ft.Colors.GREEN_200),
                     ft.Text(os.path.basename(path), expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_file)
+                    ft.IconButton(ft.Icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_file)
                 ])
             )
         file_name_text.value = f"Выбрано файлов: {len(state['selected_file_paths'])}"
@@ -120,7 +120,7 @@ def main_gui(page: ft.Page):
     file_picker = ft.FilePicker(on_result=on_file_picked)
     dir_picker_split = ft.FilePicker(on_result=on_split_dir_picked)
 
-    pick_file_btn = ft.ElevatedButton("1. Выбрать файл(ы)", icon=ft.icons.FOLDER_OPEN,
+    pick_file_btn = ft.ElevatedButton("1. Выбрать файл(ы)", icon=ft.Icons.FOLDER_OPEN,
                                       on_click=lambda _: file_picker.pick_files(allow_multiple=True))
 
     data_slider = ft.Slider(min=1, max=8, divisions=7, value=3, label="{value} блоков данных",
@@ -128,9 +128,9 @@ def main_gui(page: ft.Page):
     parity_slider = ft.Slider(min=1, max=4, divisions=3, value=2, label="{value} блоков резерва",
                               on_change=lambda _: update_split_ui())
 
-    add_dir_split_btn = ft.ElevatedButton("2. Добавить папку флешки", icon=ft.icons.ADD_TO_DRIVE,
+    add_dir_split_btn = ft.ElevatedButton("2. Добавить папку флешки", icon=ft.Icons.ADD_TO_DRIVE,
                                           on_click=lambda _: dir_picker_split.get_directory_path())
-    split_btn = ft.FilledButton("3. Начать распределенный бэкап", icon=ft.icons.PLAY_ARROW, on_click=start_backup,
+    split_btn = ft.FilledButton("3. Начать распределенный бэкап", icon=ft.Icons.PLAY_ARROW, on_click=start_backup,
                                 disabled=True)
 
     tab_split = ft.Column([
@@ -180,9 +180,9 @@ def main_gui(page: ft.Page):
 
             dirs_list_view_restore.controls.append(
                 ft.Row([
-                    ft.Icon(ft.icons.FOLDER, color=ft.Colors.ORANGE_200),
+                    ft.Icon(ft.Icons.FOLDER, color=ft.Colors.ORANGE_200),
                     ft.Text(path, expand=True, max_lines=1, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.IconButton(ft.icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir_res)
+                    ft.IconButton(ft.Icons.DELETE_OUTLINE, icon_color=ft.Colors.RED_400, on_click=remove_dir_res)
                 ])
             )
         restore_btn.disabled = len(state["restore_directories"]) == 0
@@ -210,9 +210,9 @@ def main_gui(page: ft.Page):
 
     dir_picker_restore = ft.FilePicker(on_result=on_restore_dir_picked)
 
-    add_dir_restore_btn = ft.ElevatedButton("Указать папку поиска", icon=ft.icons.FOLDER_SHARED,
+    add_dir_restore_btn = ft.ElevatedButton("Указать папку поиска", icon=ft.Icons.FOLDER_SHARED,
                                             on_click=lambda _: dir_picker_restore.get_directory_path())
-    restore_btn = ft.FilledButton("Собрать файл из кусков", icon=ft.icons.BUILD, on_click=start_restore, disabled=True)
+    restore_btn = ft.FilledButton("Собрать файл из кусков", icon=ft.Icons.BUILD, on_click=start_restore, disabled=True)
 
     page.overlay.extend([file_picker, dir_picker_split, dir_picker_restore])
 
